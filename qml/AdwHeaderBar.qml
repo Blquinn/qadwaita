@@ -2,6 +2,10 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
+import "./private"
+
+// TODO: Prevent window narrow size from squashing content elements and title.
+
 Rectangle {
     enum Icons {
         Minimize,
@@ -24,23 +28,38 @@ Rectangle {
     property string title: ""
     property alias contentLeft: contentLeftItem.children
     property alias contentRight: contentRightItem.children
-    property var decorations: [AdwHeaderBar.Icons.Minimize, AdwHeaderBar.Icons.Maximize, AdwHeaderBar.Icons.Close]
+    property var decorations: [
+        AdwHeaderBar.Icons.Minimize,
+        AdwHeaderBar.Icons.Maximize,
+        AdwHeaderBar.Icons.Close
+    ]
 
     color: "#f6f5f4"
+    height: 50
+
+    Rectangle {
+        // Margin
+        color: "#c0bfbc"
+        height: 1
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+    }
 
     Item {
         anchors.fill: parent
 
         TapHandler {
-            onDoubleTapped: window.toggleMaximized()
+            onDoubleTapped: window.toggleMaximized();
             gesturePolicy: TapHandler.DragThreshold
         }
 
         DragHandler {
             grabPermissions: TapHandler.CanTakeOverFromAnything
-            onActiveChanged: if (active) {
-                                 window.startSystemMove()
-                             }
+            onActiveChanged: if (active) {  window.startSystemMove(); }
         }
 
         Item {
@@ -94,13 +113,13 @@ Rectangle {
                             switch (modelData) {
                             case AdwHeaderBar.Icons.Minimize:
                                 window.showMinimized()
-                                break
+                                break;
                             case AdwHeaderBar.Icons.Maximize:
                                 window.toggleMaximized()
-                                break
+                                break;
                             case AdwHeaderBar.Icons.Close:
                                 window.close()
-                                break
+                                break;
                             }
                         }
                     }

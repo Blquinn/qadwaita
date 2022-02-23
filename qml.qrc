@@ -7,5 +7,6 @@
         <file>qml/private/OpacityMask.qml</file>
         <file>qml/private/SourceProxy.qml</file>
         <file>qml/AdwRoundButton.qml</file>
+        <file>qml/private/Border.qml</file>
     </qresource>
 </RCC>

@@ -21,29 +21,47 @@ AdwWindow {
             title: "QAdwaita Test"
 
             Layout.fillWidth: true
-            Layout.preferredHeight: 50
+//            Layout.preferredHeight: 50
 
             window: window
 
             contentLeft: AdwRoundButton {
                 anchors.verticalCenter: parent.verticalCenter
                 icon.name: "open-menu-symbolic"
+                onPressed: {
+                    if (pageStack.currentIndex === pageStack.count - 1) {
+                        pageStack.currentIndex = 0
+                    } else {
+                        pageStack.currentIndex++
+                    }
+                }
             }
 
-//            contentLeft: Rectangle {
-//                anchors.fill: parent
-//                color: "blue"
-//            }
-//            contentRight: Rectangle {
-//                anchors.fill: parent
-//                color: "red"
-//            }
+            //            contentLeft: Rectangle {
+            //                anchors.fill: parent
+            //                color: "blue"
+            //            }
+                        contentRight: Rectangle {
+                            height: parent.height
+                            width: 100
+//                            anchors.fill: parent
+                            color: "red"
+                        }
         }
 
-        Rectangle {
-            color: "#2ec27e"
+        StackLayout {
+            id: pageStack
+
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            Rectangle {
+                color: "#33d17a"
+            }
+
+            Rectangle {
+                color: "#e01b24"
+            }
         }
     }
 }
