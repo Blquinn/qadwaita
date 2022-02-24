@@ -8,5 +8,6 @@
         <file>qml/private/SourceProxy.qml</file>
         <file>qml/AdwRoundButton.qml</file>
         <file>qml/private/Border.qml</file>
+        <file>qml/AdwPopover.qml</file>
     </qresource>
 </RCC>

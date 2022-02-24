@@ -16,11 +16,12 @@ Rectangle {
     function iconName(enumVal) {
         switch (enumVal) {
         case AdwHeaderBar.Icons.Minimize:
-            return "window-minimize-symbolic"
+            return "window-minimize"
         case AdwHeaderBar.Icons.Maximize:
-            return "window-maximize-symbolic"
+            return "window-maximize"
         case AdwHeaderBar.Icons.Close:
-            return "window-close-symbolic"
+//            return "window-close-symbolic"
+            return "window-close"
         }
     }
 
@@ -122,6 +123,7 @@ Rectangle {
                                 break;
                             }
                         }
+                        Component.onCompleted: console.info(iconName(modelData))
                     }
                 }
             }

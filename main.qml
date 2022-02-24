@@ -21,32 +21,31 @@ AdwWindow {
             title: "QAdwaita Test"
 
             Layout.fillWidth: true
-//            Layout.preferredHeight: 50
 
             window: window
 
             contentLeft: AdwRoundButton {
+                id: menuBtn
                 anchors.verticalCenter: parent.verticalCenter
                 icon.name: "open-menu-symbolic"
                 onPressed: {
-                    if (pageStack.currentIndex === pageStack.count - 1) {
-                        pageStack.currentIndex = 0
-                    } else {
-                        pageStack.currentIndex++
-                    }
+                    popover.open()
+                }
+
+                AdwPopover {
+                    id: popover
+                    x: -(width*0.5 - menuBtn.width*0.5)
+                    y: menuBtn.height
+                    height: 200
+                    width: 100
                 }
             }
 
-            //            contentLeft: Rectangle {
-            //                anchors.fill: parent
-            //                color: "blue"
-            //            }
-                        contentRight: Rectangle {
-                            height: parent.height
-                            width: 100
-//                            anchors.fill: parent
-                            color: "red"
-                        }
+            //                        contentRight: Rectangle {
+            //                            height: parent.height
+            //                            width: 100
+            //                            color: "red"
+            //                        }
         }
 
         StackLayout {
@@ -56,7 +55,7 @@ AdwWindow {
             Layout.fillWidth: true
 
             Rectangle {
-                color: "#33d17a"
+                color: "#ffffff"
             }
 
             Rectangle {

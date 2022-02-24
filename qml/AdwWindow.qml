@@ -1,7 +1,12 @@
 import QtQuick 2.12
 import QtQuick.Window 2.3
 
-import "./private"
+//import "./private"
+//import Qt5Compat.GraphicalEffects 1.0
+import Qt5Compat.GraphicalEffects
+
+// TODO: Move grabbable edges to _outside_ of the visible window when not maximized.
+// TODO: Grab icon shows when not actually over grabbable border.
 
 Window {
     id: window

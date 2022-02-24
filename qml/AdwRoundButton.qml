@@ -4,7 +4,13 @@ import QtQuick.Controls 2.12
 RoundButton {
     id: btn
     hoverEnabled: true
-    palette.button: hovered ? "#c0bfbc" : "#deddda"
-    implicitHeight: 30
-    implicitWidth: 30
+    implicitHeight: 25
+    implicitWidth: 25
+
+    background: Rectangle {
+        color: btn.hovered ? "#c0bfbc" : "#deddda"
+        height: btn.implicitHeight
+        width: btn.implicitWidth
+        radius: width*0.5
+    }
 }
