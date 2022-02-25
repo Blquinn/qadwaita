@@ -4,8 +4,6 @@
         <file>qml/AdwWindow.qml</file>
         <file>qml/AdwHeaderBar.qml</file>
         <file>qml/AdwButton.qml</file>
-        <file>qml/private/OpacityMask.qml</file>
-        <file>qml/private/SourceProxy.qml</file>
         <file>qml/AdwRoundButton.qml</file>
         <file>qml/private/Border.qml</file>
         <file>qml/AdwPopover.qml</file>

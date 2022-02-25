@@ -3,7 +3,7 @@ import QtQuick.Window 2.3
 
 //import "./private"
 //import Qt5Compat.GraphicalEffects 1.0
-import Qt5Compat.GraphicalEffects
+import Qt5Compat.GraphicalEffects 6.0
 
 // TODO: Move grabbable edges to _outside_ of the visible window when not maximized.
 // TODO: Grab icon shows when not actually over grabbable border.
@@ -16,7 +16,6 @@ Window {
     property int bw: 5
 
     default property alias children: childContainer.children
-    property alias childCont: childContainer
 
     // If a headerbar is double tapped, window should maximize.
     function toggleMaximized() {
@@ -79,22 +78,42 @@ Window {
     }
 
     Rectangle {
-        id: coloredRect
-        anchors.fill: parent
-        radius: 16
-        color: "#ffffff"
+      id: rect
+      anchors.fill: parent
+      anchors.margins: window.visibility === Window.Maximized ? 0 : 10
+      radius: window.visibility === Window.Maximized ? 0 : 16
+    antialiasing: true
+
+        Rectangle {
+            id: coloredRect
+            anchors.fill: parent
+            radius: rect.radius
+            antialiasing: true
+            color: "#ffffff"
+        }
+
+        Item {
+            anchors.fill: coloredRect
+            layer.enabled: true
+            layer.effect: OpacityMask {
+                cached: true
+                maskSource: coloredRect
+            }
+            Item {
+                anchors.fill: parent
+                id: childContainer
+            }
+        }
+
     }
 
-    Item {
-        anchors.fill: coloredRect
-        layer.enabled: true
-        layer.effect: OpacityMask {
-            cached: true
-            maskSource: coloredRect
-        }
-        Item {
-            anchors.fill: parent
-            id: childContainer
-        }
-    }
+    // TODO: You can see the line around the border. Fix this.
+     DropShadow {
+       anchors.fill: rect
+       radius: 3
+       source: rect
+       transparentBorder: true
+       spread: 0.2
+       color: "black"
+     }
 }

@@ -13,18 +13,6 @@ Rectangle {
         Close
     }
 
-    function iconName(enumVal) {
-        switch (enumVal) {
-        case AdwHeaderBar.Icons.Minimize:
-            return "window-minimize"
-        case AdwHeaderBar.Icons.Maximize:
-            return "window-maximize"
-        case AdwHeaderBar.Icons.Close:
-//            return "window-close-symbolic"
-            return "window-close"
-        }
-    }
-
     property var window: null
     property string title: ""
     property alias contentLeft: contentLeftItem.children
@@ -34,6 +22,19 @@ Rectangle {
         AdwHeaderBar.Icons.Maximize,
         AdwHeaderBar.Icons.Close
     ]
+
+    function iconName(enumVal) {
+        switch (enumVal) {
+        case AdwHeaderBar.Icons.Minimize:
+            return "window-minimize"
+        case AdwHeaderBar.Icons.Maximize:
+            return window.visibility === Window.Maximized
+                ? "window-restore"
+                : "window-maximize"
+        case AdwHeaderBar.Icons.Close:
+            return "window-close"
+        }
+    }
 
     color: "#f6f5f4"
     height: 50

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(qdwaita-test VERSION 0.1 LANGUAGES CXX)
 
-set(CMAKE_PREFIX_PATH "D:/SDK/Qt/6.0.1/msvc2019_64/lib/cmake/")
+#set(CMAKE_PREFIX_PATH "D:/SDK/Qt/6.0.1/msvc2019_64/lib/cmake/")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
